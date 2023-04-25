@@ -1,6 +1,6 @@
 {
   "name": "free-health",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Norton Perantoni de Souza",
   "main": "index.ts",
   "license": "MIT",
@@ -9,10 +9,12 @@
     "dev": "ts-node-dev src/index.ts"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "redis": "^4.6.5"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/es6-shim": "^0.31.42",
     "@types/express": "^4.17.13",
     "@types/morgan": "^1.9.4",

@@ -1,4 +1,5 @@
 import express, {Express, Request, Response} from "express";
+import cors from "cors";
 import morgan from "morgan";
 
 import {Routes} from "../routes/";
@@ -20,7 +21,8 @@ export  class Application {
 
     private setupConfig(): void {
         this.app.use(express.json());
-        // this.app.use(express.urlencoded({type: "application/x-www-form-urlencoded"}));
+        this.app.use(express.urlencoded());
+        this.app.use(cors({origin: "*"}));
         this.app.use(morgan("dev"));
     }
 
