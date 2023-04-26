@@ -12,7 +12,9 @@ export class Buttons {
 
         buttons.map(item => {
             const [device, name] = item.split(":");
-            formattedButtons.push({device, name});
+            if(device !== "alexa"){
+                formattedButtons.push({device, name});
+            }
         });
 
         await client.disconnect();
