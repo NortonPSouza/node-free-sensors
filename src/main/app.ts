@@ -1,5 +1,4 @@
 import express, {Express, Request, Response} from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
 
@@ -23,7 +22,6 @@ export class Application {
     }
 
     private setupConfig(): void {
-        dotenv.config();
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(cors({origin: "*"}));
