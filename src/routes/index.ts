@@ -1,5 +1,6 @@
 import express, {Router} from "express";
-import {Buttons} from "../controller/buttons";
+import {Buttons} from "~@Controller/buttons";
+import {UserController} from "~@Controller/user";
 
 export class Routes{
 
@@ -7,6 +8,7 @@ export class Routes{
 
     constructor() {
         this.redisRoutes();
+        this.userRoutes();
     }
 
     public getRouter(): Router{
@@ -16,5 +18,10 @@ export class Routes{
         this.router
             .get("/buttons", Buttons.get)
             .delete("/buttons/:device/:button", Buttons.deleteButton)
+    }
+
+    public userRoutes(): void {
+        this.router
+            .post("/user",UserController.register)
     }
 }
