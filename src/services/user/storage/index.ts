@@ -34,7 +34,7 @@ export class UserStorage {
         try {
             await userRepository.save(user);
             await loginRepository.save(login);
-            return {status_code: 204, result: 'user registered'};
+            return {status_code: 204, result: 'user registered!'};
         } catch (error) {
             return {status_code: 400, result: error};
         }

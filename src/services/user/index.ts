@@ -9,17 +9,18 @@ export class UserServices {
     public static register(req: NewRequest, res: Response): Promise<ResponseOperation> {
         const {name, email, password, house_name} = req.body;
 
+
         const fields = {
-            isName: UserValidate.isName(name),
+            isName: UserValidate.isName(name, 6),
             isEmail: UserValidate.isEmail(email),
             isPassword: UserValidate.isPassword(password),
-            isHouseName: UserValidate.isName(house_name)
+            isHouseName: UserValidate.isName(house_name,4)
         }
 
         return new Promise((resolve, reject) => {
             for (const key in fields) {
                 if (!fields[key].status) {
-                    return reject(fields[key].message);
+                    return reject({ status_code: 400, result: fields[key].message });
                 }
             }
             UserStorage.register(req.dataSource, {name, email, password, house_name})

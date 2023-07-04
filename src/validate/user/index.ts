@@ -23,12 +23,12 @@ export class UserValidate {
         return { status: true, message: '' };
     }
 
-    public static isName(value: string): ErrorMessage {
+    public static isName(value: string, length: number): ErrorMessage {
         const name = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
         if (!value) {
             return {
                 status: false,
-                message: this.EMPTY_FIELD.replace("FIELD", "Name")
+                message: this.EMPTY_FIELD.replace("FIELD", "")
             }
         }
         if (!name.test(value)) {
@@ -37,10 +37,10 @@ export class UserValidate {
                 message: "Name must be a string"
             }
         }
-        if (value.length < 6) {
+        if (value.length < length) {
             return {
                 status: false,
-                message: "Name must have minimun 6 caracters"
+                message: `Field must have minimun ${length} caracters`
             }
         }
         return { status: true, message: '' };
